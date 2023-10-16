@@ -1,0 +1,31 @@
+<section class="container my-4 p-3 rounded shadow details" *ngIf="prodData">
+<div class="row align-items-center g-4">
+    <div class="col-md-3">
+        <owl-carousel-o [options]="imageOptions">
+
+            <ng-container *ngFor="let path of prodData.images">
+              <ng-template carouselSlide>
+                <img class="w-100" [src]="path" >
+            </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+
+
+
+    </div>
+    <div class="col-md-9">
+        <i *ngIf="!wishData.includes(prodData._id)" (click)="addFavProd(prodData._id)" title="add to wishlist" class="fa-solid fa-heart-circle-plus heart2 text-main"></i>
+        <i *ngIf="wishData.includes(prodData._id)" (click)="removeFavProd(prodData._id)" title="add to wishlist" class="fa-solid fa-heart-circle-minus  heart2 text-danger"></i>
+      
+<h2 class="h5">{{prodData.title}}</h2>
+<p class="text-muted">{{prodData.description}}</p>
+<span>{{prodData.category.name}}</span>
+<div class="my-3 d-flex align-items-center justify-content-between">
+<span>{{prodData.price}} EGP</span>
+<span><i class="fas fa-star rating-color"></i>{{prodData.ratingsAverage}}</span>
+</div>
+<button (click)="addProd(prodData._id  , myBtn)" #myBtn class="w-100 text-white btn main-btn my-2"> + Add</button>
+    </div>
+</div>
+
+</section>

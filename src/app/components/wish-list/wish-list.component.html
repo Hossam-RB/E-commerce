@@ -1,0 +1,47 @@
+
+<div class="my-3 rounded shadow p-3 container"  *ngIf="products.length > 0;else wishListTemp">
+
+
+<div class="row justify-content-center">
+    <div *ngFor="let product of products|slice:0:18"   class="col-sm-6 col-md-4 col-lg-2 ">
+        <div class="product px-2 py-4">
+
+            <i *ngIf="!wishData.includes(product._id)" (click)="addFavProd(product._id)" title="add to wishlist" class="fa-solid fa-heart-circle-plus heart text-main"></i>
+            <i *ngIf="wishData.includes(product._id)" (click)="removeFavProd(product._id)" title="add to wishlist" class="fa-solid fa-heart-circle-minus  heart text-danger"></i>
+            
+            <header [routerLink]="['/productDetails',product._id]" class="cursor-pointer"> 
+    <img class="w-100" [src]="product.imageCover" [alt]="product.title" [title]="product.title">
+
+
+
+    <div class="">
+    <span class="main-color fw-bold font-sm">{{product.category.name}}</span>
+    <h2 class="h6 fw-bolder">{{product.title.split(' ').slice(0,2).join(' ')}}</h2>
+</div>
+
+
+<div class="d-flex justify-content-between align-item-center">
+    <span class="text-muted fw-bold font-sm">{{product.price}} EGP</span>
+    <div>
+    <span class="text-muted fw-bold font-sm">{{product.ratingsAverage}}</span>
+<i class="fas fa-star rating-color"></i>
+</div>
+</div>
+
+</header>
+<button (click)="addProd(product._id  , myBtn)" #myBtn class="w-100 text-white btn main-btn my-2"> + Add</button>
+        </div>
+    
+    
+    
+    
+    </div>
+
+</div>
+</div>
+<ng-template #wishListTemp>
+    <div class="container rounded shadow  my-3 py-4">
+    <h1 class="text-center my-3">Your Wish List Is Empty ......</h1>
+    <button routerLink="/products" class="main-btn w-100 my-3 ">Add To Wish List</button>
+</div>
+</ng-template>

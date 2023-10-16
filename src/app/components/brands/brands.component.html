@@ -1,0 +1,15 @@
+<section *ngIf="brandData.length >0" class="my-3 container">
+    <h1 class="text-center py-2">All Brands</h1>
+<div role="button" class="row g-3 justify-content-center">
+<div *ngFor="let brand of brandData" class="col-sm-6 col-md-4 col-lg-3 ">
+
+<div class="p-2 border border-success rounded shadow">
+    <img height="300" class="w-100" [src]="brand.image" [alt]="brand.name">
+<h3 class="text-main text-center ">{{brand.name}}</h3>
+</div>
+</div>
+
+
+
+</div>
+</section>

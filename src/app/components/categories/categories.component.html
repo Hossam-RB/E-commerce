@@ -1,0 +1,15 @@
+<section *ngIf="categData.length >0" class="my-3 container">
+    <h1 class="text-center py-2">All categories</h1>
+<div role="button" class="row g-3 justify-content-center">
+<div *ngFor="let category of categData" class="col-sm-6 col-md-4 col-lg-3 ">
+
+<div class="p-2 border border-success rounded shadow">
+    <img height="300" class="w-100" [src]="category.image" [alt]="category.name">
+<h3 class="text-main text-center">{{category.name}}</h3>
+</div>
+</div>
+
+
+
+</div>
+</section>
